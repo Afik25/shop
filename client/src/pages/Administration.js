@@ -45,8 +45,17 @@ const Administration = () => {
       <div className="user">
         <div className="left">
           <div className="header">
-            <img src={process.env.PUBLIC_URL + "/logo.png"} alt="orga-logo" />
-            <h2 className="title t-3">Entity type</h2>
+            <img
+              src={
+                !connectedUser?.userInfo?.organization?.thumbnails
+                  ? process.env.PUBLIC_URL + "/logo.png"
+                  : `${process.env.REACT_APP_API_SERVER_URL}:${process.env.REACT_APP_API_SERVER_PORT}/${connectedUser?.userInfo?.organization?.thumbnails}`
+              }
+              alt="orga-logo"
+            />
+            <h2 className="title t-3">
+              {connectedUser?.userInfo?.entity?.type}
+            </h2>
           </div>
           <div className="body">
             <div className="navigation">
@@ -116,18 +125,20 @@ const Administration = () => {
                       src={
                         !connectedUser?.userInfo?.thumbnails
                           ? process.env.PUBLIC_URL + "/user.png"
-                          : `http://localhost:5500/${connectedUser?.userInfo?.thumbnails}`
+                          : `${process.env.REACT_APP_API_SERVER_URL}:${process.env.REACT_APP_API_SERVER_PORT}/${connectedUser?.userInfo?.thumbnails}`
                       }
                       alt="user-profile"
                     />
                   </div>
                   <div>
                     <h3 className="title t-2">
-                      {connectedUser?.userInfo?.prename +
+                      {connectedUser?.userInfo?.firstname +
                         " " +
-                        connectedUser?.userInfo?.name}
+                        connectedUser?.userInfo?.lastname}
                     </h3>
-                    <p className="t-3">{connectedUser?.userInfo?.role}</p>
+                    <p className="t-3">
+                      {connectedUser?.userInfo?.role?.title}
+                    </p>
                   </div>
                   {option ? (
                     <BiChevronUp className="icon" />

@@ -9,11 +9,12 @@ import Register from "../pages/Register";
 import Administration from "../pages/Administration";
 //
 // Layouts
-import Configuration from "../pages/layouts/Configuration";
 import Dashboard from "../pages/layouts/Dashboard";
 import Sale from "../pages/layouts/Sale";
 import HumanRessourse from "../pages/layouts/HumanRessourse";
+import Configuration from "../pages/layouts/Configuration";
 //
+import Article from "../pages/layouts/configurations/Article";
 import Module from "../pages/layouts/configurations/Module";
 
 //
@@ -22,6 +23,7 @@ import NotFound from "../pages/404";
 import Unauthorized from "../pages/Unauthorized";
 
 const ROLES = {
+  root: "root",
   admin: "admin",
   user: "user",
 };
@@ -50,7 +52,7 @@ export const routes = [
                     path: "configuration",
                     element: <Configuration />,
                     children: [
-                      // { index: true, element: <Subscription /> },
+                      { index: true, element: <Article /> },
                       { path: "modules", element: <Module /> },
                     ],
                   },

@@ -1,10 +1,10 @@
+const Organization = require("../../models/organization/Organization");
 const Entity = require("../../models/organization/Entity");
+const Department = require("../../models/organization/Department");
+const Service = require("../../models/organization/Service");
 const User = require("../../models/users/User");
 const Role = require("../../models/users/Role");
 const Login = require("../../models/users/Login");
-const Permission = require("../../models/users/Permission");
-const Module = require("../../models/settings/Module");
-
 //
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -30,13 +30,13 @@ module.exports = {
       const user = await User.findOne({
         where: {
           [Op.or]: [
-            { username: username },
+            { username: username.toLowerCase() },
             {
               telephone: {
                 [Op.like]: `%${username}%`,
               },
             },
-            { mail: username },
+            { mail: username.toLowerCase() },
           ],
         },
       });
@@ -45,7 +45,7 @@ module.exports = {
         return res.status(400).json({
           status: 0,
           isLogged: false,
-          message: "The username or/and password is/are wrong.",
+          message: "The Username or/and password is/are wrong.",
         });
       }
 
@@ -53,31 +53,43 @@ module.exports = {
         return res.status(400).json({
           status: 0,
           isLogged: false,
-          message: "The username or/and password is/are wrong.",
+          message: "The username or/and Password is/are wrong.",
         });
       }
       const user_id = user.id;
       //
       const role = await Role.findOne({ where: { id: user.role_id } });
+      const service = await Service.findOne({
+        where: { id: user.service_id },
+      });
+      const department = await Department.findOne({
+        where: { id: service.department_id },
+      });
       const entity = await Entity.findOne({
-        where: { id: user.entity_id },
+        where: { id: department.entity_id },
+      });
+      const organization = await Organization.findOne({
+        where: { id: entity.organization_id },
       });
       //
       const refreshToken = jwt.sign(
         {
           userInfo: {
-            organization_id: entity.organization_id,
-            entity_id: user.entity_id,
+            organization: organization,
+            entity: entity,
+            department: department,
+            service: service,
+            role: role,
             user_id: user_id,
-            prename: user.prename,
-            name: user.name,
+            firstname: user.firstname,
+            lastname: user.lastname,
             gender: user.gender,
             telephone: user.telephone,
             mail: user.mail,
             birth: user.birth,
             birth_location: user.birth_location,
-            role: role.title,
             sys_role: user.sys_role,
+            sys_id: user.sys_id,
             thumbnails: user.thumbnails,
             is_completed: user.is_completed,
           },
@@ -104,18 +116,21 @@ module.exports = {
       const accessToken = jwt.sign(
         {
           userInfo: {
-            organization_id: entity.organization_id,
-            entity_id: user.entity_id,
+            organization: organization,
+            entity: entity,
+            department: department,
+            service: service,
+            role: role,
             user_id: user_id,
-            prename: user.prename,
-            name: user.name,
+            firstname: user.firstname,
+            lastname: user.lastname,
             gender: user.gender,
             telephone: user.telephone,
             mail: user.mail,
             birth: user.birth,
             birth_location: user.birth_location,
-            role: role.title,
             sys_role: user.sys_role,
+            sys_id: user.sys_id,
             thumbnails: user.thumbnails,
             is_completed: user.is_completed,
             login: login.id,
@@ -140,7 +155,7 @@ module.exports = {
         sys_role: user.sys_role,
       });
     } catch (error) {
-      console.log({ "catch error login user ": error });
+      console.log({ "Error login user ": error });
     }
   },
   async refreshToken(req, res) {

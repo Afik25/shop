@@ -32528,3 +32528,11 @@
 20240307	19:23:31	77935eca-fe53-4a02-a077-7d7a42bdaefb	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
 20240307	19:25:15	a5b50ded-ed5d-4a1f-bc37-78d81d2fa632	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
 20240307	19:25:54	35f7cb85-2537-493c-ad14-ded347a8d613	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	20:52:23	018c5d0e-77a7-4181-a3c3-33a513189a6c	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	20:53:48	89350388-d352-44d4-878d-3fbf05525f5a	localhost:5550	POST	http://localhost:3001	/api/v1/auth/login
+20240307	20:55:27	e30a5084-d286-410e-ba9a-600c0a9eb8bf	localhost:5550	POST	http://localhost:3001	/api/v1/auth/login
+20240307	20:57:54	1737c10b-90ce-4c3c-ab85-3caeff4141d3	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
+20240307	20:57:54	08ab88e1-79df-4408-9a05-1d7a43f1b3a5	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
+20240307	20:58:34	31e13713-9c3f-40cc-a5d5-c33baf4ee4b6	localhost:5550	POST	http://localhost:3001	/api/v1/auth/login
+20240307	21:27:27	9ee5528e-9e32-41f9-9dc8-57e99e52dfb5	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
+20240307	21:27:27	542754c5-e54e-4d29-8e9e-4bcf773cd0ae	localhost:5550	GET	http://localhost:3001	/api/v1/refresh

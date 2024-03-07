@@ -16,7 +16,8 @@ const Configuration = () => {
             activeClassName="active-option"
             inactiveClassName="inactive-option"
             className="link-option"
-            to="/admin/configuration/product"
+            to="/admin/configuration"
+            exact={true}
           >
             {/* <MdOutlineDashboard className="option-icon" /> */}
             <span>Article</span>
@@ -43,11 +44,19 @@ const Configuration = () => {
             activeClassName="active-option"
             inactiveClassName="inactive-option"
             className="link-option"
-            to="/admin/configuration"
-            exact={true}
+            to="/admin/configuration/subscription"
           >
             {/* <MdOutlineDashboard className="option-icon" /> */}
             <span>Subscriptions & Plans</span>
+          </NavLink>
+          <NavLink
+            activeClassName="active-option"
+            inactiveClassName="inactive-option"
+            className="link-option"
+            to="/admin/configuration/modules"
+          >
+            {/* <MdOutlineDashboard className="option-icon" /> */}
+            <span>Modules</span>
           </NavLink>
         </div>
       </div>

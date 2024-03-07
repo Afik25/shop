@@ -10,12 +10,12 @@ import { validationSchemaLogin, wait } from "../utils/utils";
 //
 import { login } from "../services/authentication";
 import useAuth from "../hooks/context/hooks/useAuth";
+import MessageBox from "../components/msgBox/MessageBox";
 //
 const Login = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [onRequest, setOnRequest] = useState({ show: false, onSucces: false });
-  const [countries, setCountries] = useState();
   const [msg, setMsg] = useState("");
 
   const { setAuth } = useAuth();
@@ -35,11 +35,10 @@ const Login = () => {
     await wait(1000);
     //
     login(data)
-      .then((result) => {
-        let response = result;
-        if (result?.data?.isLogged) {
+      .then((response) => {
+        if (response?.data?.isLogged) {
           setIsSending(false);
-          setMsg(result?.data?.message);
+          setMsg(response?.data?.message);
           setOnRequest({ show: true, onSucces: true });
         }
         const accessToken = response?.data?.accessToken;
@@ -95,15 +94,7 @@ const Login = () => {
                 Get connected and start manage your activities with Shop
               </p>
               {onRequest.show && (
-                <div
-                  className={
-                    onRequest.onSucces
-                      ? "msg-box onSuccess fade-in"
-                      : "msg-box onFailed fade-in"
-                  }
-                >
-                  {msg}
-                </div>
+                <MessageBox text={msg} isSuccess={onRequest.onSucces} />
               )}
               <div className="form-components">
                 <div className="input-div">
