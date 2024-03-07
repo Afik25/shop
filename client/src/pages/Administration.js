@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { NavLink } from "../routes/NavLink";
@@ -16,8 +16,9 @@ import {
   BiChevronUp,
 } from "../middlewares/icons";
 import useLogout from "../hooks/context/hooks/useLogout";
-import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "../utils/utils";
+import { useSelector } from "react-redux";
+import Modal from "../components/modal/Modal";
+// import CompleteRegister from "../components/complete/CompleteRegister";
 
 const Administration = () => {
   const [option, setOption] = useState(false);
@@ -30,7 +31,6 @@ const Administration = () => {
     navigate("/login");
   };
   //
-  const dispatch = useDispatch();
   const connectedUser = useSelector(
     (state) => state.setInitConf.initConnectedUser.connectedUserData
   );
@@ -42,6 +42,7 @@ const Administration = () => {
         <meta name="description" content="Grow Up your business with SHOP." />
         <meta name="keywords" content="admin, user" />
       </Helmet>
+      <>
       <div className="user">
         <div className="left">
           <div className="header">
@@ -170,6 +171,17 @@ const Administration = () => {
           </div>
         </div>
       </div>
+      {!connectedUser?.userInfo?.is_completed && (
+        <Modal
+          visibility={false}
+          height="95%"
+          width="60%"
+          title="Complete Initial Configuration"
+          // content={<CompleteRegister sys_role={user?.userInfo?.sys_role} />}
+          content={<span>Test modal</span>}
+        />
+      )}
+      </>
     </HelmetProvider>
   );
 };
