@@ -38,6 +38,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      sys_id: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       updated_at: {
         type: Sequelize.DATE,
         allowNull: true,

@@ -27,6 +27,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      sys_id: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       status: {
         type: Sequelize.INTEGER,
         allowNull: false,

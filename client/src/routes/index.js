@@ -1,11 +1,9 @@
-export const COUNTRIES = "/countries";
-// 
-export const REGISTER = "/register";
-export const COMPLETE = "/complete";
-export const COMPLETE_ACTIVATION = "/activation";
-export const LOGINS = "/login";
-export const REFRESH = "/refresh";
-export const LOGOUT = "/logout";
+export const REGISTER = "/auth/register";
+export const COMPLETE = "/auth/complete";
+export const COMPLETE_ACTIVATION = "/auth/activation";
+export const LOGINS = "/auth/login";
+export const REFRESH = "/auth/refresh";
+export const LOGOUT = "/auth/logout";
 // 
 export const ORGANIZATIONS = "/organizations";
 export const ENTITIES = "/entities";

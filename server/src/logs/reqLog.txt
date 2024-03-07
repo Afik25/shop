@@ -32523,3 +32523,8 @@
 20231005	11:07:35	9ead8b85-1ddd-4457-a11d-5aa3637e1977	192.168.1.113:5500	GET	http://localhost:3000	/api/v1/refresh
 20231005	11:07:35	92e0a091-8602-45aa-81ee-36617cc68cd6	192.168.1.113:5500	GET	http://localhost:3000	/api/v1/refresh
 20231005	11:07:35	b5d37cd3-318a-4e07-b2fb-1744470113ab	192.168.1.113:5500	GET	http://localhost:3000	/api/v1/refresh
+20240307	18:42:13	792cbcea-f9a6-4482-b329-3703b70eb4fa	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	19:19:31	2bb0129f-48c4-4fbf-9eb4-f996fbf456d3	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	19:23:31	77935eca-fe53-4a02-a077-7d7a42bdaefb	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	19:25:15	a5b50ded-ed5d-4a1f-bc37-78d81d2fa632	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register
+20240307	19:25:54	35f7cb85-2537-493c-ad14-ded347a8d613	localhost:5550	POST	http://localhost:3001	/api/v1/auth/register

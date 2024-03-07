@@ -10,6 +10,7 @@ class Organization extends Model {
         status: DataTypes.INTEGER,
         description: DataTypes.TEXT,
         thumbnails: DataTypes.STRING,
+        sys_id: DataTypes.STRING,
         updated_at: DataTypes.DATE,
       },
       {

@@ -10,7 +10,7 @@
 
   .t-1 {
     font-family: "raleway-regular", sans-serif;
-    font-size: $size-medium;
+    font-size: $size-1;
     font-weight: bold;
     letter-spacing: 1px;
   }
@@ -29,7 +29,7 @@
   overflow-y: auto;
 
   .normal {
-    background-color: $main-color;
+    background-color: $color-1;
     border-radius: 0.5rem;
     color: $white-color;
   }
@@ -49,14 +49,14 @@
     .config-tab {
       height: 100%;
       color: $grey-color-1;
-      font-size: $size-small-1;
+      font-size: $size-1;
       display: flex;
       justify-content: center;
       align-items: center;
       @include padding(1rem);
     }
     .active-tab {
-      background-color: $main-color;
+      background-color: $color-1;
       border-radius: 0.5rem;
       color: $white-color;
       font-weight: bold;
@@ -85,7 +85,7 @@
       height: 50px;
       border-radius: 50%;
       border: 3px solid transparent;
-      border-top-color: $main-color;
+      border-top-color: $color-1;
       margin: auto;
       animation: _loader 1.4s ease 0.5s infinite;
     }

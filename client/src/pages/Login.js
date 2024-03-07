@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import ControlLanguage from "../components/languages/ControlLanguage";
@@ -8,12 +8,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchemaLogin, wait } from "../utils/utils";
 //
-import { login } from "../services/login";
-import useAuth from "../state/context/hooks/useAuth";
-import {
-  getCountries,
-} from "../services/configuration";
-import { useDispatch } from "react-redux";
+import { login } from "../services/authentication";
+import useAuth from "../hooks/context/hooks/useAuth";
 //
 const Login = () => {
   const [showPwd, setShowPwd] = useState(false);
@@ -24,26 +20,6 @@ const Login = () => {
 
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    getCountries(signal).then((result) => {
-      dispatch({
-        type: "setUp/initCountry",
-        payload: result,
-      });
-    });
-
-    return () => {
-      isMounted = false;
-      isMounted && controller.abort();
-    };
-  }, []);
-  //
 
   const {
     register,
@@ -199,8 +175,7 @@ const Login = () => {
               Let us help you to grow up your business!
             </h3>
             <p className="title t-3">
-              The registration process is quick qnd easy, taking no more then 10
-              minutes to complete.
+              The log in process allowing you to manage in the quick and easy way all about your ressources.
             </p>
           </div>
         </div>

@@ -9,7 +9,7 @@
       background-color: $grey-color-3;
       border-top: 1px solid $grey-color-2;
       border-bottom: 1px solid $grey-color-2;
-      font-size: $size-small-1;
+      font-size: $size-07;
       color: $grey-color-1;
       th {
         @include padding(0.5rem);
@@ -35,11 +35,11 @@
         div {
           text-align: left;
           h3 {
-            font-size: $size-small-1;
+            font-size: $size-1;
             letter-spacing: 0.1rem;
           }
           p {
-            font-size: $size-small-2;
+            font-size: $size-05;
             color: $grey-color-1;
             font-weight: bold;
             letter-spacing: 0.05rem;
@@ -48,7 +48,7 @@
       }
       .role {
         color: $black-color;
-        font-size: $size-small-1;
+        font-size: $size-07;
         font-weight: 600;
         letter-spacing: 0.025rem;
       }
@@ -56,7 +56,7 @@
         padding: 0.3rem 0.5rem;
         border: 1px solid $grey-color-2;
         border-radius: 0.5rem;
-        font-size: $size-small-2;
+        font-size: $size-05;
       }
       .success {
         color: $green-color;
@@ -75,7 +75,7 @@
           border-radius: 0.5em;
           border: 1px solid $grey-color-2;
           color: $black-color;
-          font-size: $size-small-1;
+          font-size: $size-1;
           transition: all 0.3s ease-in-out;
           @include padding(0.4rem);
 

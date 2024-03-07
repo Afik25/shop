@@ -1,6 +1,5 @@
 import axios from "../middlewares/http-common";
 import {
-  COUNTRIES,
   ORGANIZATIONS,
   ENTITIES,
   ROLES,
@@ -8,19 +7,6 @@ import {
   SUBSCRIPTIONS,
 } from "../routes";
 
-// COUNTRY
-export function getCountries(signal) {
-  return new Promise(async (resolve, reject) => {
-    await axios
-      .get(COUNTRIES)
-      .then((response) => {
-        resolve(response);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-}
 
 // ORGANIZATIONS
 export function getOrganizations(axiosPrivate, signal) {

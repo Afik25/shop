@@ -5,6 +5,8 @@ const connection = new sequelize(database);
 // Admin
 const Organization = require("../api/v1/models/organization/Organization");
 const Entity = require("../api/v1/models/organization/Entity");
+const Department = require("../api/v1/models/organization/Department");
+const Service = require("../api/v1/models/organization/Service");
 const Inscription = require("../api/v1/models/organization/Inscription");
 const User = require("../api/v1/models/users/User");
 const Login = require("../api/v1/models/users/Login");
@@ -19,6 +21,8 @@ const Subscription = require("../api/v1/models/subscription/Subscription");
 //
 Organization.init(connection);
 Entity.init(connection);
+Department.init(connection);
+Service.init(connection);
 Inscription.init(connection);
 User.init(connection);
 Login.init(connection);

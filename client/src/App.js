@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 import Router from "./routes/Router";
-import { AuthProvider } from "./state/context/AuthProvider";
+import { AuthProvider } from "./hooks/context/AuthProvider";
+import { store } from "./hooks/redux/store";
 import { Provider } from "react-redux";
-import { store } from "./state/redux/store";
 
 function App() {
   return (

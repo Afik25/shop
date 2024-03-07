@@ -5,10 +5,10 @@ class User extends Model {
   static init(sequelize) {
     super.init(
       {
-        entity_id: DataTypes.INTEGER,
+        service_id: DataTypes.INTEGER,
         role_id: DataTypes.INTEGER,
-        prename: DataTypes.STRING,
-        name: DataTypes.STRING,
+        firstname: DataTypes.STRING,
+        lastname: DataTypes.STRING,
         gender: DataTypes.STRING,
         telephone: DataTypes.STRING,
         mail: DataTypes.STRING,
@@ -19,6 +19,7 @@ class User extends Model {
         thumbnails: DataTypes.STRING,
         is_completed: DataTypes.BOOLEAN,
         sys_role: DataTypes.STRING,
+        sys_id: DataTypes.STRING,
         status: DataTypes.INTEGER,
         updated_at: DataTypes.DATE,
       },
@@ -41,14 +42,9 @@ class User extends Model {
       as: "user_role",
       allowNull: false,
     });
-    this.belongsTo(models.Entity, {
-      foreignKey: "entity_id",
-      as: "user_entity",
-      allowNull: false,
-    });
-    this.hasMany(models.Permission, {
-      foreignKey: "user_id",
-      as: "user_Permission",
+    this.belongsTo(models.Service, {
+      foreignKey: "service_id",
+      as: "user_service",
       allowNull: false,
     });
     this.hasMany(models.Login, {
@@ -59,11 +55,6 @@ class User extends Model {
     this.hasMany(models.Configuration, {
       foreignKey: "user_id",
       as: "user_configuration",
-      allowNull: false,
-    });
-    this.hasMany(models.Order, {
-      foreignKey: "user_id",
-      as: "user_order",
       allowNull: false,
     });
   }

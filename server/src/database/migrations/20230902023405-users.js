@@ -10,9 +10,9 @@ module.exports = {
         autoIncrement: true,
         allowNull: false,
       },
-      entity_id: {
+      service_id: {
         type: Sequelize.INTEGER,
-        references: { model: "entities", key: "id" },
+        references: { model: "services", key: "id" },
         allowNull: false,
       },
       role_id: {
@@ -20,11 +20,11 @@ module.exports = {
         references: { model: "roles", key: "id" },
         allowNull: false,
       },
-      prename: {
+      firstname: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      name: {
+      lastname: {
         type: Sequelize.STRING,
         allowNull: true,
       },
@@ -66,6 +66,10 @@ module.exports = {
         defaultValue: false,
       },
       sys_role: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      sys_id: {
         type: Sequelize.STRING,
         allowNull: true,
       },

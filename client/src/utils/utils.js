@@ -19,10 +19,10 @@ export const wait = (duration = 1000) => {
 export const validationSchemaRegister = Yup.object().shape({
   organization: Yup.string().required("The name of organization is required"),
   country: Yup.string().required("Select the country"),
-  prename: Yup.string()
+  firstname: Yup.string()
     .required("First Name is required")
     .min(2, "The first name must have at least 2 caractors"),
-  name: Yup.string()
+  lastname: Yup.string()
     .required("Last Name is required")
     .min(2, "The last name must have at least 2 caractors"),
   username: Yup.string().required("Username is required"),

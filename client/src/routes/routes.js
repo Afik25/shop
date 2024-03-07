@@ -1,6 +1,6 @@
 import MainLayout from "../MainLayout";
-import PersistLogin from "../state/context/hooks/PersistLogin";
-import RequireAuth from "../state/context/hooks/RequireAuth";
+import PersistLogin from "../hooks/context/hooks/PersistLogin";
+import RequireAuth from "../hooks/context/hooks/RequireAuth";
 //
 // pages
 import Home from "../pages/Home";
@@ -13,11 +13,8 @@ import Configuration from "../pages/layouts/Configuration";
 import Dashboard from "../pages/layouts/Dashboard";
 import Sale from "../pages/layouts/Sale";
 import HumanRessourse from "../pages/layouts/HumanRessourse";
-// 
-import Article from "../pages/layouts/configurations/Article";
-import Partner from "../pages/layouts/configurations/Partner";
-import Entity from "../pages/layouts/configurations/Entity";
-import Subscription from "../pages/layouts/configurations/Subscription";
+//
+import Module from "../pages/layouts/configurations/Module";
 
 //
 // Control
@@ -53,10 +50,8 @@ export const routes = [
                     path: "configuration",
                     element: <Configuration />,
                     children: [
-                      { path: "product", element: <Article /> },
-                      { path: "partner", element: <Partner /> },
-                      { path: "extension", element: <Entity /> },
-                      { index: true, element: <Subscription /> },
+                      // { index: true, element: <Subscription /> },
+                      { path: "modules", element: <Module /> },
                     ],
                   },
                 ],

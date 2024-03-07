@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    font-size: $size-medium;
+    font-size: $size-1;
     border: 1px solid $grey-color-2;
     border-radius: 0.5rem;
     padding: 0.6rem;
@@ -23,12 +23,12 @@
   .label-form,
   .label-icon {
     position: absolute;
-    left: $size-medium;
+    left: $size-1;
     top: 0.7rem;
     padding: 0 0.25rem;
     background: none;
     color: $grey-color-1;
-    font-size: $size-small-1;
+    font-size: $size-07;
     transition: 0.3s;
   }
   .label-form {
@@ -36,25 +36,25 @@
   }
   .label-icon {
     left: unset;
-    right: $size-medium;
+    right: $size-1;
     z-index: 2;
   }
   .input-textarea:focus,
   .input-form:focus {
-    border: 1.5px solid $third-color;
+    border: 1.5px solid $color-3;
     background: none;
     + .label-form {
       top: -0.8em;
       left: 0.8em;
       background-color: $white-color;
-      color: $third-color;
-      font-size: $size-small-2;
+      color: $color-3;
+      font-size: $size-05;
       font-weight: 500;
       z-index: 10;
     }
     ~ .label-icon {
       background-color: $white-color;
-      color: $third-color;
+      color: $color-3;
     }
   }
   .input-textarea:not(:placeholder-shown).input-form:not(:focus),
@@ -62,7 +62,7 @@
     + .label-form {
       top: -0.7rem;
       left: 0.7rem;
-      font-size: $size-small-2;
+      font-size: $size-05;
       font-weight: 500;
       z-index: 10;
     }
@@ -70,7 +70,7 @@
 
   span {
     color: $red-color;
-    font-size: $size-small-1;
+    font-size: $size-1;
   }
 
   .input-image{
@@ -101,19 +101,19 @@
       .input-file-label {
         display: flex;
         align-items: center;
-        background-color: $main-color;
+        background-color: $color-1;
         border-radius: 0.4em;
         color: $white-color;
         cursor: pointer;
         padding: 0.7em !important;
-        font-size: $size-small-1;
+        font-size: $size-1;
       }
     }
   }
 }
 
 input[type="checkbox"] {
-  margin-right: $size-medium;
+  margin-right: $size-1;
 }
 
 // switched
@@ -127,7 +127,7 @@ input[type="checkbox"] {
   width: 110px;
   @include padding(0.5rem);
   span {
-    font-size: $size-medium;
+    font-size: $size-1;
     font-weight: bold;
     letter-spacing: 1px;
   }
@@ -153,7 +153,7 @@ input[type="checkbox"] {
       transition: all 200ms ease-in-out;
       .icon {
         color: $white-color;
-        font-size: $size-medium;
+        font-size: $size-1;
       }
     }
 

@@ -1,12 +1,16 @@
-@import "./fonts";
 @import "./colors";
-@import "./grids";
 @import "./sizes";
+@import "./fonts";
+@import "./backgrounds";
+@import "./buttons";
+@import "./grids";
 @import "./languages";
-@import "./menu-drawer";
-@import "./inputs";
 @import "./modal";
+@import "./others";
 @import "./table";
+@import "./components";
+@import "./inputs";
+@import "./menu-drawer";
 
 *,
 *::after,
@@ -25,7 +29,7 @@
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: $main-color;
+  background-color: $color-1;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: $grey-color-1;
@@ -39,297 +43,124 @@ html {
 
 body {
   font-family: "raleway-regular", sans-serif;
-  font-size: $size-medium;
+  font-size: $size-1;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-.title {
-  text-decoration: none;
-  letter-spacing: 1px;
-  color: $black-color;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-.t-1 {
-  font-size: $size-large;
-}
-.t-2 {
-  font-size: $size-medium;
-}
-.t-3 {
-  font-size: $size-small-1;
-}
-
-.button {
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.m-auto {
-  margin: auto;
-}
-
-.link {
-  text-decoration: none;
-}
-//
-.fade-in {
-  animation: fadeIn 2s;
-}
-.fade-out {
-  animation: fadeOut 3s;
-}
-//
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.75;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
-// logo
-.logo {
-  width: 100px;
-  height: 50px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.msg-box {
-  color: $white-color;
-  @include padding(1em !important);
-  margin-bottom: 1em;
-  text-align: center;
-}
-
-.onSuccess {
-  background-color: $green-color;
-  border-radius: 0.3rem;
-  color: $white-color;
-  font-size: $size-small-1;
-  padding: 0.3rem;
-}
-.onFailed {
-  background-color: $red-color;
-  border-radius: 0.3rem;
-  color: $white-color;
-  font-size: $size-small-1;
-  padding: 0.3rem;
-}
-
-.display-none {
-  display: none;
-}
-
 // Home
 .home {
   width: 100%;
-  .header {
-    position: relative;
-    width: 100%;
-    height: 720px;
-    background-color: $white-color;
+  .banner {
+    width: 90%;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @include padding($size-2 0);
+    margin: auto;
 
-    .head {
-      width: 90%;
-      height: 100px;
-      // background-color: $white-color;
+    .left,
+    .right {
+      height: 100%;
+    }
+    .left {
+      width: 50%;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      @include padding(0 2em);
-      margin: auto;
-    }
-    .head.fixed {
-      width: 100%;
-      position: fixed;
-      background-color: $grey-color-3;
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-      transition: all 0.3s ease-in-out;
-      z-index: 99;
-    }
-    .nav,
-    .other-nav {
-      display: flex;
-      align-items: center;
-    }
-    .nav {
-      .nav-item {
-        color: $grey-color-1;
-        margin-right: 1em;
-        font-size: $size-medium;
-        transition: all 0.3s ease-in-out;
+      flex-direction: column;
+      justify-content: center;
+      .title {
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5em;
+      }
+      .flash {
+        background-color: rgba($color: $gold-color, $alpha: 0.2);
+        border-radius: 0.8em;
+        @include padding(0.5em 1em);
+        width: auto;
+        margin-right: auto;
+        color: $black-color;
+        display: flex;
+        align-items: center;
 
-        &:hover {
-          color: $main-color;
-          font-weight: bold;
+        .icon {
+          margin-right: 0.5em;
+        }
+        .t-3 {
+          font-size: $size-07;
+          margin: 0 !important;
         }
       }
-    }
-    .other-nav {
-      .btn-sign-in,
-      .btn-sign-up {
-        border-radius: 1.2em;
-        margin-right: 0.8em;
-        font-size: $size-small-1;
+      .t-1 {
+        font-size: 3.5em;
         font-weight: bold;
-        padding: 0.9em 2em;
-        transition: all 0.3s ease-in-out;
+      }
+      .t-2 {
+        color: $grey-color-1;
+        font-size: $size-1;
+      }
+      .buttons {
+        display: flex;
+        margin-top: 0.6em;
+        .btn-join {
+          width: 30%;
+          background-color: $color-1;
+          color: $white-color;
+          border-radius: 1em;
+          font-size: $size-1;
+          font-weight: bold;
+          margin-right: 2em;
+          @include padding(1.5em 1em);
+          position: relative;
+          text-align: center;
+        }
+        .btn-join::after,
+        .btn-join::before {
+          content: " ";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border-radius: 1em;
+        }
+        .btn-join::before {
+          background-color: transparent;
+          animation: pulse 1250ms ease-out infinite;
+          z-index: 10;
+        }
+        .btn-join::after {
+          background-color: lightblue;
+          z-index: 1;
+          animation: pulse 1250ms ease-out infinite;
+        }
 
-        &:hover {
-          background-color: $grey-color-3;
-          color: $black-color;
+        .btn-demo {
+          background-color: rgba($color: $grey-color-1, $alpha: 0.15);
+          color: $gold-color;
+          @include padding(1.5em);
+          transition: all 0.3s ease-in-out;
+          .icon {
+            margin-right: 0.3em;
+            color: $gold-color;
+          }
+          &:hover {
+            background-color: $black-color;
+            color: $white-color;
+          }
         }
       }
-      .btn-sign-in {
-        color: $main-color;
-      }
-      .btn-sign-up {
-        background-color: $main-color;
-        color: $white-color;
-      }
     }
-
-    .banner {
-      width: 90%;
-      height: calc(100% - 80px);
-      // background-color: $white-color;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      @include padding(0 2em 0);
-      margin: auto;
-
-      .left,
-      .right {
+    .right {
+      width: 50%;
+      height: 97%;
+      overflow: hidden;
+      img {
+        width: 100%;
         height: 100%;
       }
-      .left {
-        width: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        .title {
-          letter-spacing: 0.05em;
-          margin-bottom: 0.5em;
-        }
-        .flash {
-          background-color: rgba($color: $gold-color, $alpha: 0.2);
-          border-radius: 0.8em;
-          @include padding(0.5em 1em);
-          width: auto;
-          margin-right: auto;
-          color: $black-color;
-          display: flex;
-          align-items: center;
-
-          .icon {
-            margin-right: 0.5em;
-          }
-          .t-3 {
-            font-size: $size-small-1;
-            margin: 0 !important;
-          }
-        }
-        .t-1 {
-          font-size: 3.5em;
-          font-weight: bold;
-        }
-        .t-2 {
-          color: $grey-color-1;
-          font-size: $size-medium;
-        }
-        .buttons {
-          display: flex;
-          margin-top: 0.6em;
-          .btn-join {
-            width: 30%;
-            background-color: $main-color;
-            color: $white-color;
-            border-radius: 1em;
-            font-size: $size-small-1;
-            font-weight: bold;
-            margin-right: 2em;
-            @include padding(1.5em 1em);
-            position: relative;
-            text-align: center;
-          }
-          .btn-join::after,
-          .btn-join::before {
-            content: " ";
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-radius: 1em;
-          }
-          .btn-join::before {
-            background-color: transparent;
-            animation: pulse 1250ms ease-out infinite;
-            z-index: 10;
-          }
-          .btn-join::after {
-            background-color: lightblue;
-            z-index: 1;
-            animation: pulse 1250ms ease-out infinite;
-          }
-
-          .btn-demo {
-            background-color: rgba($color: $grey-color-1, $alpha: 0.15);
-            color: $gold-color;
-            @include padding(1.5em);
-            transition: all 0.3s ease-in-out;
-            .icon {
-              margin-right: 0.3em;
-              color: $gold-color;
-            }
-            &:hover {
-              background-color: $black-color;
-              color: $white-color;
-            }
-          }
-        }
-      }
-      .right {
-        width: 50%;
-        height: 97%;
-        overflow: hidden;
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-    }
-    .banner.fixed {
-      height: 100%;
     }
   }
   .partnership {
@@ -352,7 +183,7 @@ body {
         margin-right: 0.5em;
       }
       .t-3 {
-        font-size: $size-small-1;
+        font-size: $size-07;
         margin: 0 !important;
       }
     }
@@ -409,7 +240,7 @@ body {
           margin-right: 0.5em;
         }
         .t-3 {
-          font-size: $size-small-1;
+          font-size: $size-07;
           margin: 0 !important;
         }
       }
@@ -424,7 +255,7 @@ body {
       .services {
         width: 100%;
         .t-2 {
-          font-size: $size-large;
+          font-size: $size-105;
           font-weight: bold;
         }
         .container {
@@ -448,7 +279,7 @@ body {
             border-bottom: 1px solid $grey-color-1;
 
             .icon {
-              color: $main-color;
+              color: $color-1;
               font-size: 3em;
             }
             .feat {
@@ -480,36 +311,6 @@ body {
   }
 }
 
-.not-found {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-
-  .link {
-    position: absolute;
-    z-index: 1;
-    left: 5em;
-    top: 5em;
-    background-color: $main-color;
-    padding: 1em 1.5em;
-    color: $white-color;
-    border-radius: 0.4em;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-      background-color: $white-color;
-      color: $main-color;
-    }
-  }
-
-  .img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-  }
-}
-
 .sign-in-up {
   width: 100vw;
   height: 100vh;
@@ -518,12 +319,12 @@ body {
   .head,
   .container,
   .foot {
-    position: absolute;
+    position: relative;
   }
   .head,
   .foot {
-    width: 100%;
     height: 80px;
+    width: 100%;
     background-color: $white-color;
     z-index: 1;
   }
@@ -535,9 +336,8 @@ body {
   }
   .container {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 160px);
     display: flex;
-    @include padding(5em 0em);
     .left,
     .right {
       width: 50%;
@@ -553,26 +353,17 @@ body {
         padding: 0 5em;
         .t-1 {
           color: $black-color;
-          font-size: $size-large;
+          font-size: $size-105;
           font-weight: bold;
         }
         .t-3 {
-          font-size: $size-small-1;
+          font-size: $size-07;
           color: $grey-color-1;
           margin-bottom: 4em;
         }
-        .msg-box {
-          width: 100%;
-          color: $white-color;
-          text-align: center;
-          @include padding(1em 2em);
-          margin: 1em 0;
-        }
-        .onSuccess {
-          background-color: $green-color;
-        }
-        .onFailed {
-          background-color: $red-color;
+        .fade-in{
+          color: $red-color;
+          font-size: $size-09;
         }
         .form-components {
           display: flex;
@@ -595,16 +386,20 @@ body {
           margin-top: 1em;
         }
         .normal {
-          background-color: $third-color;
+          background-color: $color-3;
           color: $white-color;
         }
 
         .get_sign-in {
           width: 100%;
-          @include padding(2em);
+          @include padding($size-1);
           text-align: center;
+          font-size: $size-09;
           span {
             margin-right: 1em;
+          }
+          .link{
+            color: $color-2;
           }
         }
       }
@@ -617,7 +412,7 @@ body {
       @include padding(0 5em);
 
       .t-1 {
-        color: $main-color;
+        color: $color-1;
         font-family: "shalimar-regular", sans-serif;
         font-size: 10em;
         font-weight: bold;
@@ -633,7 +428,6 @@ body {
     }
   }
   .foot {
-    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -672,10 +466,10 @@ body {
       }
       .t-2 {
         font-weight: bold;
-        font-size: $size-large;
+        font-size: $size-105;
       }
       .t-3 {
-        font-size: $size-small-1;
+        font-size: $size-07;
       }
     }
     .footer {
@@ -697,7 +491,7 @@ body {
         flex-direction: column;
         .active-option {
           background-color: rgba($color: $grey-color-1, $alpha: 0.15);
-          color: $main-color;
+          color: $color-1;
         }
         .inactive-option {
           color: $grey-color-1;
@@ -765,7 +559,7 @@ body {
           position: relative;
 
           .t-2 {
-            font-size: $size-small-1;
+            font-size: $size-07;
             margin: 0 0.5rem;
           }
 
@@ -814,7 +608,7 @@ body {
               color: $black-color;
               cursor: pointer;
               padding: 0.5rem 1rem;
-              font-size: $size-small-1;
+              font-size: $size-07;
 
               display: flex;
               align-items: center;
@@ -857,7 +651,7 @@ body {
         margin-bottom: 0.3em;
       }
       .t-3 {
-        font-size: $size-small-1;
+        font-size: $size-07;
         margin: 0;
       }
     }
@@ -874,8 +668,8 @@ body {
         @include padding(0.5em);
       }
       .active-option {
-        color: $main-color;
-        border-bottom: 4px solid $main-color;
+        color: $color-1;
+        border-bottom: 4px solid $color-1;
         font-weight: bold;
       }
       .inactive-option {
@@ -904,7 +698,7 @@ body {
           background-color: $grey-color-3;
           display: flex;
           align-items: center;
-          font-size: $size-medium;
+          font-size: $size-1;
           color: $gold-color;
           @include padding(1rem);
           span {
@@ -987,7 +781,7 @@ body {
                   margin-bottom: 0.3em;
                 }
                 .t-2 {
-                  color: $main-color;
+                  color: $color-1;
                   font-weight: bold;
                 }
                 .t-3 {
@@ -1019,7 +813,7 @@ body {
                 }
                 .btn {
                   width: 100%;
-                  background-color: $main-color;
+                  background-color: $color-1;
                   border: none;
                   border-radius: 0.5em;
                   padding: 0.8em;
@@ -1077,7 +871,7 @@ body {
             padding: 0 0.3em 0;
             .t-2 {
               margin: 0;
-              font-size: $size-large;
+              font-size: $size-105;
               font-weight: bold;
             }
             .close {
@@ -1098,7 +892,7 @@ body {
                 margin-bottom: 0.3em;
               }
               .t-2 {
-                color: $main-color;
+                color: $color-1;
                 font-weight: bold;
               }
               .t-3 {
@@ -1156,7 +950,7 @@ body {
                 margin-top: 1em;
               }
               .normal {
-                background-color: $third-color;
+                background-color: $color-3;
                 color: $white-color;
               }
             }
@@ -1188,7 +982,7 @@ body {
           }
           .button {
             width: 100%;
-            background-color: $main-color;
+            background-color: $color-1;
             color: $white-color;
             border-radius: 0.4rem;
             padding: 1rem;
@@ -1201,7 +995,7 @@ body {
             table {
               width: 100%;
               tbody {
-                font-size: $size-small-1 !important;
+                font-size: $size-07 !important;
                 font-family: "Times New Roman", Times, serif;
               }
               .tbody-col-6 {
@@ -1275,7 +1069,7 @@ body {
                 }
               }
               .btn-activate {
-                background-color: $main-color;
+                background-color: $color-1;
                 color: $white-color;
               }
             }
@@ -1287,14 +1081,14 @@ body {
               margin-left: 0.6rem;
               &:hover {
                 background-color: $white-color;
-                color: $main-color;
+                color: $color-1;
               }
             }
             .btn-print {
               background-color: $black-color;
             }
             .btn-new-partner {
-              background-color: $main-color;
+              background-color: $color-1;
             }
           }
         }
@@ -1326,7 +1120,7 @@ body {
             table {
               width: 100%;
               tbody {
-                font-size: $size-small-1 !important;
+                font-size: $size-07 !important;
                 font-family: "Times New Roman", Times, serif;
               }
               .tbody-col-1 {
@@ -1381,7 +1175,7 @@ body {
             border-bottom: 1px solid $grey-color-3;
             .t-2 {
               margin: 0;
-              font-size: $size-large;
+              font-size: $size-105;
               font-weight: bold;
             }
             .close {
@@ -1396,7 +1190,7 @@ body {
             overflow-y: auto;
             .button {
               width: 100%;
-              background-color: $main-color;
+              background-color: $color-1;
               border-radius: 0.5rem;
               color: $white-color;
               padding: 1rem;
@@ -1462,14 +1256,14 @@ body {
               margin-left: 0.6rem;
               &:hover {
                 background-color: $white-color;
-                color: $main-color;
+                color: $color-1;
               }
             }
             .btn-print {
               background-color: $black-color;
             }
             .btn-new-partner {
-              background-color: $main-color;
+              background-color: $color-1;
             }
           }
         }
@@ -1501,7 +1295,7 @@ body {
             table {
               width: 100%;
               tbody {
-                font-size: $size-small-1 !important;
+                font-size: $size-07 !important;
                 font-family: "Times New Roman", Times, serif;
               }
               .tbody-col-1 {
@@ -1556,7 +1350,7 @@ body {
             border-bottom: 1px solid $grey-color-3;
             .t-2 {
               margin: 0;
-              font-size: $size-large;
+              font-size: $size-105;
               font-weight: bold;
             }
             .close {
@@ -1583,7 +1377,7 @@ body {
               }
             }
             .tab-active {
-              background-color: $main-color;
+              background-color: $color-1;
               color: $white-color;
             }
           }
@@ -1594,7 +1388,7 @@ body {
             overflow-y: auto;
             .button {
               width: 100%;
-              background-color: $main-color;
+              background-color: $color-1;
               border-radius: 0.5rem;
               color: $white-color;
               padding: 1rem;
@@ -1612,7 +1406,7 @@ body {
                 }
               }
             }
-            // 
+            //
             .container {
               width: 100%;
               height: 100%;
@@ -1631,7 +1425,7 @@ body {
                 }
                 .button {
                   width: 100%;
-                  background-color: $main-color;
+                  background-color: $color-1;
                   color: $white-color;
                   border-radius: 0.4rem;
                   padding: 1rem;
@@ -1644,10 +1438,10 @@ body {
                   table {
                     width: 100%;
                     tbody {
-                      font-size: $size-small-1 !important;
+                      font-size: $size-07 !important;
                       font-family: "Times New Roman", Times, serif;
                     }
-                    .tbody-col-1{
+                    .tbody-col-1 {
                       width: 20%;
                     }
                     .tbody-col-5 {
@@ -1673,14 +1467,14 @@ body {
                     }
                   }
                 }
-                .pagination{
+                .pagination {
                   .button {
                     margin: 0.3rem;
                     border-radius: 0.5rem;
                     background-color: transparent;
                     border: 1px solid $grey-color-2;
                     padding: 0.3rem !important;
-                
+
                     .icon {
                       color: $grey-color-2;
                     }
@@ -1727,7 +1521,7 @@ body {
 
           .t-2 {
             color: $grey-color-1;
-            font-size: $size-small-1;
+            font-size: $size-07;
           }
           .title {
             display: flex;
@@ -1735,13 +1529,13 @@ body {
             margin: 0.3em;
 
             .icon {
-              color: $third-color;
+              color: $color-3;
               font-weight: 400;
               margin-right: 0.5em;
             }
             .t-3 {
               color: $black-color;
-              font-size: $size-medium;
+              font-size: $size-1;
               font-weight: bold;
             }
           }
@@ -1751,7 +1545,7 @@ body {
         text-align: right;
 
         .button {
-          background-color: $third-color;
+          background-color: $color-3;
           border-radius: 0.4em;
           color: $white-color;
         }
@@ -1792,8 +1586,8 @@ body {
             display: flex;
             justify-content: space-between;
             .icon {
-              color: $third-color;
-              font-size: $size-medium;
+              color: $color-3;
+              font-size: $size-1;
               cursor: pointer;
             }
           }
@@ -1807,22 +1601,22 @@ body {
               border-radius: 50%;
             }
             .t-1 {
-              font-size: $size-medium;
+              font-size: $size-1;
               font-weight: bold;
             }
             .t-2 {
-              font-size: $size-small-1;
+              font-size: $size-07;
               font-weight: 500;
             }
             .t-3 {
-              font-size: $size-small-1;
+              font-size: $size-07;
               font-weight: 500;
               color: rgba($color: $grey-color-1, $alpha: 0.65);
             }
             .t-4 {
-              font-size: $size-small-1;
+              font-size: $size-07;
               font-weight: 500;
-              color: $third-color;
+              color: $color-3;
             }
           }
         }
@@ -1832,4 +1626,80 @@ body {
 }
 
 @media only screen and (max-width: 688px) {
+  .sign-in-up {
+    .head {
+      @include padding($size-1);
+    }
+    .container {
+      flex-direction: column;
+      overflow-y: auto;
+      .left,
+      .right {
+        width: 100%;
+        height: auto;
+      }
+
+      .left {
+        justify-content: unset;
+        order: 2;
+        .form {
+          padding: $size-2;
+          .form-components {
+            display: flex;
+            justify-content: unset;
+            flex-wrap: unset;
+            flex-direction: column;
+  
+            .fragment-48 {
+              width: 100%;
+            }
+          }
+          .privacy {
+            width: 100%;
+            font-size: $size-05;
+          }
+          .button {
+            width: 100%;
+            background-color: $grey-color-2;
+            border-radius: 0.3em;
+            padding: 1em 2em;
+            text-align: center;
+            margin-top: 1em;
+          }
+          .normal {
+            background-color: $color-3;
+            color: $white-color;
+          }
+  
+          .get_sign-in {
+            width: 100%;
+            @include padding(2em);
+            text-align: center;
+            span {
+              margin-right: 1em;
+            }
+          }
+        }
+      }
+      .right {
+        align-items: center;
+        order: 1;
+        @include padding($size-1);
+  
+        .t-1 {
+          font-size: $size-3;
+        }
+        .t-2 {
+          font-size: $size-1;
+        }
+        .t-3 {
+          font-size: $size-07;
+        }
+      }
+    }
+    .foot {
+      background-color: rgba($color: $grey-color-1, $alpha: 0.05);
+      font-size: $size-07;
+    }
+  }
 }

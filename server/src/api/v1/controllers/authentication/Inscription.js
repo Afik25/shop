@@ -1,5 +1,7 @@
 const Organization = require("../../models/organization/Organization");
 const Entity = require("../../models/organization/Entity");
+const Department = require("../../models/organization/Department");
+const Service = require("../../models/organization/Service");
 const Inscription = require("../../models/organization/Inscription");
 const Role = require("../../models/users/Role");
 const User = require("../../models/users/User");
@@ -10,33 +12,29 @@ const Subscription = require("../../models/subscription/Subscription");
 const { generateOTP } = require("../../../../utils/utils");
 const bcrypt = require("bcrypt");
 const moment = require("moment");
-const { v4: uuid } = require("uuid");
+const { v1: uuid } = require("uuid");
 
 module.exports = {
   async create(req, res) {
     try {
       const { organization, country } = req.body;
-      const { prename, name, username, password, sys_role } = req.body;
-      //
+      const { firstname, lastname, username, password, sys_role } = req.body;
+
       const check_username = await User.findOne({
-        where: { username: username },
+        where: { username: username.toLowerCase() },
       });
       if (check_username) {
         return res.status(400).json({
           status: 0,
-          message: "The username is already used!",
+          message: "The username is not available!",
         });
       }
-      //
 
+      var sys_id = uuid();
       const _organization = await Organization.create({
-        name: organization,
+        name: organization.toLowerCase(),
         country: country,
-      });
-
-      const _entity = await Entity.create({
-        organization_id: _organization.id,
-        type: "main",
+        sys_id,
       });
 
       const _role = await Role.create({
@@ -44,31 +42,54 @@ module.exports = {
         title: "General Administrator",
       });
 
-      const user = await User.create({
+      var sys_id = uuid();
+      const _entity = await Entity.create({
+        organization_id: _organization.id,
+        type: "main",
+        sys_id,
+      });
+
+      var sys_id = uuid();
+      const _department = await Department.create({
         entity_id: _entity.id,
+        title: "general",
+        sys_id,
+      });
+
+      var sys_id = uuid();
+      const _service = await Service.create({
+        department_id: _department.id,
+        title: "general",
+        sys_id,
+      });
+
+      var sys_id = uuid();
+      const user = await User.create({
+        service_id: _service.id,
         role_id: _role.id,
-        prename,
-        name,
-        username,
+        firstname: firstname.toLowerCase(),
+        lastname: lastname.toLowerCase(),
+        username: username.toLowerCase(),
         password,
         is_completed: false,
         sys_role,
+        sys_id,
       });
 
       if (user) {
         return res.status(200).json({
           status: 1,
-          message: `Registration process for ${organization} has started successfully.`,
+          message: `Registration process for ${organization.toUpperCase()} has started successfully.`,
           user,
         });
       }
 
       return res.status(400).json({
         status: 0,
-        message: `Registration process for ${organization} failed.`,
+        message: `Registration process for ${organization.toUpperCase()} failed.`,
       });
     } catch (error) {
-      console.log({ "catch error create inscription(registration) ": error });
+      console.log({ "Error on create inscription(registration) ": error });
     }
   },
   async complete(req, res) {

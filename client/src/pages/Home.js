@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import ControlLanguage from "../components/languages/ControlLanguage";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
 import {
   BsFillLightningChargeFill,
   FaPlay,
@@ -14,16 +16,8 @@ import {
 } from "../middlewares/icons";
 
 const Home = () => {
-  const [fix, setFix] = useState(false);
+  const { t } = useTranslation();
 
-  function fixedOnscroll() {
-    if (window.scrollY >= 600) {
-      setFix(true);
-    } else {
-      setFix(false);
-    }
-  }
-  window.addEventListener("scroll", fixedOnscroll);
   return (
     <React.Fragment>
       <Helmet>
@@ -38,65 +32,47 @@ const Home = () => {
         />
       </Helmet>
       <div className="home">
-        <div className="header">
-          <div className={fix ? "head fixed" : "head"}>
-            <Link to="/" className="logo link">
-              <img src={process.env.PUBLIC_URL + "/logo.png"} alt="logo" />
-            </Link>
-            <div className="nav">
-              <Link to="/" className="nav-item link">
-                Home
-              </Link>
-              <Link to="" className="nav-item link">
-                Feature
-              </Link>
-              <Link to="" className="nav-item link">
-                Pricing
-              </Link>
-              <Link to="" className="nav-item link">
-                Community
-              </Link>
+        <Header />
+        <div className="banner">
+          <div className="left" data-aos="fade-right" data-aos-duration="1000">
+            <div className="flash">
+              <BsFillLightningChargeFill className="icon" />
+              <span className="title t-3">
+                The pioneer sales management platform
+              </span>
             </div>
-            <div className="other-nav">
-              <Link to="/login" className="btn-sign-in link">
-                Login
+            <h2 className="title t-1">
+              Make your management well organized, anytime, anywhere you are.
+            </h2>
+
+            <p className="title t-2">
+              Shop is powerful and responsive multi-platform software that makes
+              it easier for to manage organization(company), anytime, anywhere,
+              with 24/7 support that is always there to help.
+            </p>
+            <div className="buttons">
+              <Link
+                to="/register"
+                className="btn-join link"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="3000"
+              >
+                Get started
               </Link>
-              <Link to="/register" className="btn-sign-up link">
-                Register
-              </Link>
-              <ControlLanguage />
+              <button
+                className="button btn-demo"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="4000"
+              >
+                <FaPlay className="icon" />
+                See how it works ?
+              </button>
             </div>
           </div>
-          <div className={fix ? "banner fixed" : "banner"}>
-            <div className="left">
-              <div className="flash">
-                <BsFillLightningChargeFill className="icon" />
-                <span className="title t-3">
-                  The pioneer sales management platform
-                </span>
-              </div>
-              <h2 className="title t-1">
-                Make your management well organized, anytime, anywhere you are.
-              </h2>
-              
-              <p className="title t-2">
-                Shop is powerful and responsive multi-platform software that
-                makes it easier for to manage organization(company), anytime,
-                anywhere, with 24/7 support that is always there to help.
-              </p>
-              <div className="buttons">
-                <Link to="/register" className="btn-join link">
-                  Get started
-                </Link>
-                <button className="button btn-demo">
-                  <FaPlay className="icon" />
-                  See how it works ?
-                </button>
-              </div>
-            </div>
-            <div className="right">
-              <img src={process.env.PUBLIC_URL + "/growth.png"} alt="growth" />
-            </div>
+          <div className="right" data-aos="fade-left" data-aos-duration="2000">
+            <img src={process.env.PUBLIC_URL + "/growth.png"} alt="growth" />
           </div>
         </div>
         <div className="partnership">
@@ -179,6 +155,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </React.Fragment>
   );

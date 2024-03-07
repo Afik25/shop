@@ -1,42 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import ControlLanguage from "../components/languages/ControlLanguage";
 import { BsEyeSlash, BsEye } from "../middlewares/icons";
 //
-import axios from "../middlewares/http-common";
-import { COUNTRIES } from "../routes";
+import countries from "../middlewares/countries.json";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchemaRegister, wait } from "../utils/utils";
-import { registerOrganization } from "../services/register";
+import { isEmpty, validationSchemaRegister, wait } from "../utils/utils";
+import { registerOrganization } from "../services/authentication";
+import MessageBox from "../components/msgBox/MessageBox";
 
 const Register = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [onRequest, setOnRequest] = useState({ show: false, onSucces: false });
-  const [countries, setCountries] = useState();
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    const getCountries = async () => {
-      const response = await axios.get(COUNTRIES, {
-        signal: signal,
-      });
-      setCountries(response?.data?.countries);
-    };
-    getCountries();
-
-    return () => {
-      isMounted = false;
-      isMounted && controller.abort();
-    };
-  }, []);
 
   const {
     register,
@@ -104,15 +84,7 @@ const Register = () => {
               <h2 className="title t-1">Sing Up</h2>
               <p className="title t-3">Create account to start using Shop</p>
               {onRequest.show && (
-                <div
-                  className={
-                    onRequest.onSucces
-                      ? "msg-box onSuccess fade-in"
-                      : "msg-box onFailed fade-in"
-                  }
-                >
-                  {msg}
-                </div>
+                <MessageBox text={msg} isSuccess={onRequest.onSucces} />
               )}
               <div className="form-components">
                 <div className="input-div">
@@ -137,7 +109,11 @@ const Register = () => {
                     <option value=" " style={{ color: "grey" }}>
                       Organization's Country (Select country)
                     </option>
-                    {countries?.length ? (
+                    {isEmpty(countries) ? (
+                      <option value="" disabled>
+                        No information available about countries.
+                      </option>
+                    ) : (
                       countries.map((country) => {
                         return (
                           <option
@@ -148,10 +124,6 @@ const Register = () => {
                           </option>
                         );
                       })
-                    ) : (
-                      <option value="" disabled>
-                        No Information
-                      </option>
                     )}
                   </select>
                   {errors.country && (
@@ -164,13 +136,13 @@ const Register = () => {
                     className="input-form"
                     autoComplete="none"
                     placeholder=" "
-                    {...register("prename")}
+                    {...register("firstname")}
                   />
-                  <label htmlFor="prename" className="label-form">
-                    Prename
+                  <label htmlFor="firstname" className="label-form">
+                    Firstname
                   </label>
-                  {errors.prename && (
-                    <span className="fade-in">{errors.prename.message}</span>
+                  {errors.firstname && (
+                    <span className="fade-in">{errors.firstname.message}</span>
                   )}
                 </div>
                 <div className="input-div fragment-48">
@@ -179,13 +151,13 @@ const Register = () => {
                     className="input-form"
                     autoComplete="none"
                     placeholder=" "
-                    {...register("name")}
+                    {...register("lastname")}
                   />
-                  <label htmlFor="name" className="label-form">
-                    Name
+                  <label htmlFor="lastname" className="label-form">
+                    Lastname
                   </label>
-                  {errors.name && (
-                    <span className="fade-in">{errors.name.message}</span>
+                  {errors.lastname && (
+                    <span className="fade-in">{errors.lastname.message}</span>
                   )}
                 </div>
                 <div className="input-div">
@@ -265,7 +237,7 @@ const Register = () => {
               <div className="privacy">
                 <div className="input-div display-flex justify-content-flex-start align-items-center">
                   <input type="checkbox" name="gcu" {...register("gcu")} />
-                  <label htmlFor="gcu" style={{ fontSize: "0.9rem" }}>
+                  <label htmlFor="gcu">
                     Agree
                     <Link
                       to=""
@@ -282,12 +254,7 @@ const Register = () => {
                   </label>
                 </div>
                 {errors.gcu && (
-                  <span
-                    className="fade-in"
-                    style={{ color: "red", fontSize: "0.9em" }}
-                  >
-                    {errors.gcu.message}
-                  </span>
+                  <span className="fade-in">{errors.gcu.message}</span>
                 )}
               </div>
               <button
@@ -310,14 +277,15 @@ const Register = () => {
               Let us help you to grow up your business!
             </h3>
             <p className="title t-3">
-              The registration process is quick qnd easy, taking no more then 10
-              minutes to complete.
+              The registration process is quick and simple, taking no more then
+              10 minutes to complete.
             </p>
           </div>
         </div>
         <div className="foot">
           <span>
-            All rights reserved Afik Foundation &copy; 2023 - Shop Platform.
+            All rights reserved Afik Foundation &copy;{" "}
+            {new Date().getFullYear()} - Shop Platform.
           </span>
         </div>
       </div>

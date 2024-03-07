@@ -3,6 +3,7 @@ import {
   BiChevronDown,
   BiChevronUp,
   BiDollar,
+  BiPhone,
 } from "react-icons/bi";
 import {
   BsEyeSlash,
@@ -34,16 +35,24 @@ import {
   IoHelp,
 } from "react-icons/io5";
 import { FiUsers, FiUser, FiLogOut, FiHome } from "react-icons/fi";
-import { FaPlay, FaNetworkWired, FaPlus } from "react-icons/fa";
+import {
+  FaPlay,
+  FaNetworkWired,
+  FaPlus,
+  FaAt,
+  FaMapMarkerAlt,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaYoutube,
+} from "react-icons/fa";
 import { GrDocumentStore } from "react-icons/gr";
 import { RiAttachment2 } from "react-icons/ri";
 import { LuPlane } from "react-icons/lu";
 
+export { BiEnvelope, BiChevronDown, BiChevronUp, BiDollar, BiPhone };
+
 export {
-  BiEnvelope,
-  BiChevronDown,
-  BiChevronUp,
-  BiDollar,
   BsEyeSlash,
   BsEye,
   BsFillCameraFill,
@@ -53,25 +62,36 @@ export {
   BsSearch,
   BsPinAngle,
   BsCapsule,
+};
+
+export {
   MdOutlineArrowBackIos,
   MdOutlineArrowForwardIos,
   MdOutlineDashboard,
   MdOutlinePointOfSale,
   MdOutlineMoreVert,
-  HiOutlineDocumentDuplicate,
-  HiOutlineClipboardDocumentList,
-  IoCubeOutline,
-  IoSettingsOutline,
-  IoNotificationsOutline,
-  IoHelp,
-  FiUsers,
-  FiUser,
-  FiLogOut,
-  FiHome,
+};
+
+export { HiOutlineDocumentDuplicate, HiOutlineClipboardDocumentList };
+
+export { IoCubeOutline, IoSettingsOutline, IoNotificationsOutline, IoHelp };
+
+export { FiUsers, FiUser, FiLogOut, FiHome };
+
+export {
   FaPlay,
   FaNetworkWired,
   FaPlus,
-  GrDocumentStore,
-  RiAttachment2,
-  LuPlane,
+  FaAt,
+  FaMapMarkerAlt,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaYoutube,
 };
+
+export { GrDocumentStore };
+
+export { RiAttachment2 };
+
+export { LuPlane };

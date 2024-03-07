@@ -3,8 +3,8 @@ const router = express.Router();
 const verifyJWT = require("../middlewares/verifyJWT");
 const uploadFiles = require("../middlewares/uploadFiles");
 const countries = require("../middlewares/countries.json");
-const Inscription = require("../api/v1/controllers/inscription/Inscription");
-const Login = require("../api/v1/controllers/users/Login");
+const Inscription = require("../api/v1/controllers/authentication/Inscription");
+const Login = require("../api/v1/controllers/authentication/Login");
 const User = require("../api/v1/controllers/users/User");
 const Organization = require("../api/v1/controllers/organization/Organization");
 const Entity = require("../api/v1/controllers/organization/Entity");
@@ -16,19 +16,15 @@ const Subscription = require("../api/v1/controllers/subscription/Subscription");
 // root configure
 // router.get("/root", User.rootConfigure);
 //
-router.get("/countries", function (req, res) {
-  res.status(200).json({ countries });
-});
-//
 // Register
-router.post("/register", Inscription.create);
-router.post("/complete", verifyJWT, Inscription.complete);
-router.post("/activation", verifyJWT, Inscription.activateCompletion);
+router.post("/auth/register", Inscription.create);
+router.post("/auth/complete", verifyJWT, Inscription.complete);
+router.post("/auth/activation", verifyJWT, Inscription.activateCompletion);
 //
 // login
-router.post("/login", Login.login);
-router.get("/refresh", verifyJWT, Login.refreshToken);
-router.get("/logout", verifyJWT, Login.logout);
+router.post("/auth/login", Login.login);
+router.get("/auth/refresh", verifyJWT, Login.refreshToken);
+router.get("/auth/logout", verifyJWT, Login.logout);
 //
 // organization
 router.get("/organizations", verifyJWT, Organization.get);
