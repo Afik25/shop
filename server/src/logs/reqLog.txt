@@ -32540,3 +32540,6 @@
 20240307	21:58:19	39e6b661-6fe3-4e9f-aea5-622e98846122	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
 20240307	21:58:19	81760a3b-1ac7-4710-949c-cad1f0384695	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
 20240307	21:58:29	3e0679f0-71ad-4490-8973-bc1cbd9c26af	localhost:5550	POST	http://localhost:3001	/api/v1/auth/login
+20240308	12:27:39	4fddbddf-5893-4eaf-8735-b08691da041d	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
+20240308	12:27:39	f9ee7e3b-73e5-426e-abdc-93d3e4e5c021	localhost:5550	GET	http://localhost:3001	/api/v1/refresh
+20240308	12:27:49	4672e867-0e5e-44bc-9e6e-f43fe423da47	localhost:5550	POST	http://localhost:3001	/api/v1/auth/login
